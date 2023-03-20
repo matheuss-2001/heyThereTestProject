@@ -14,7 +14,7 @@ class _ChangeColorPageState extends State<ChangeColorPage> {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
+    return InkWell(
       onTap: () {
         changeColor();
       },
