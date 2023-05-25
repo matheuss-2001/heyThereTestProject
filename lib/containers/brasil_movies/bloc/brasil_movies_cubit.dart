@@ -22,7 +22,7 @@ class BrasilMoviesCubit extends Cubit<BrasilMoviesModel>
       listaDeFilmesBloc = await _cadastroContaService.getMovies();
       if (listaDeFilmesBloc.isNotEmpty) {
         consulted = true;
-        emit(state.patchState(moviesList: listaDeFilmesBloc));
+        emit(BrasilMoviesModel(moviesList: listaDeFilmesBloc));
       }
     }
   }
@@ -38,6 +38,6 @@ class BrasilMoviesCubit extends Cubit<BrasilMoviesModel>
     } else {
       itens[index].liked = false;
     }
-    emit(state.patchState(moviesList: itens));
+    emit(BrasilMoviesModel(moviesList: itens));
   }
 }

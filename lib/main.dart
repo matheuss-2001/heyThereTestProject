@@ -7,7 +7,8 @@ import '/api/brasil_movies_service/brasil_movies_service.dart';
 void main() {
   runApp(const MyApp());
   if (!Injector.appInstance.exists<IBrasilMoviesService>()) {
-    Injector.appInstance.registerDependency<IBrasilMoviesService>(() => BrasilMoviesService());
+    Injector.appInstance
+        .registerDependency<IBrasilMoviesService>(() => BrasilMoviesService());
   }
 }
 
