@@ -2,9 +2,9 @@ import 'dart:collection';
 import 'dart:convert';
 import 'dart:developer';
 import 'dart:io';
-import 'package:heythereproject/containers/brasil_movies/models/movies_viewmodel.dart';
+import 'package:imdbMoviews/containers/brasil_movies/models/movies_viewmodel.dart';
 import 'package:http/http.dart' as http;
-import 'package:heythereproject/api/brasil_movies_service/i_brasil_movies_service.dart';
+import 'package:imdbMoviews/api/brasil_movies_service/i_brasil_movies_service.dart';
 
 class BrasilMoviesService extends Service implements IBrasilMoviesService {
   BrasilMoviesService() : super();

@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:heythereproject/containers/brasil_movies/models/movies_viewmodel.dart';
+import 'package:imdbMoviews/containers/brasil_movies/models/movies_viewmodel.dart';
 import '../bloc/brasil_movies_cubit.dart';
 import '../bloc/brasil_movies_model.dart';
+import 'package:imdbMoviews/containers/brasil_movies/bloc/brasil_movies_cubit.dart';
 
 class BrasilRecentMoviesScreen extends StatelessWidget {
   static String ROUTE = "/brasil_recent_movies-screen";
@@ -69,7 +71,7 @@ class BrasilRecentMoviesScreen extends StatelessWidget {
 
                 return InkWell(
                   onTap: () {
-                    _bloc.ontapMovieItem(item);
+                    _bloc.ontapMovieItem(state.moviesList, index);
                   },
                   child: Column(
                     children: <Widget>[
@@ -85,11 +87,11 @@ class BrasilRecentMoviesScreen extends StatelessWidget {
                                 image: DecorationImage(
                                     image: NetworkImage(item.urlImage),
                                     fit: BoxFit.cover),
-                                boxShadow: [
+                                boxShadow: const [
                                   BoxShadow(
                                       color: Color(0xff3C3261),
                                       blurRadius: 5.0,
-                                      offset: new Offset(2.0, 5.0))
+                                      offset: Offset(2.0, 5.0))
                                 ],
                               ),
                               child: Container(
@@ -111,13 +113,13 @@ class BrasilRecentMoviesScreen extends StatelessWidget {
                                   children: [
                                     Text(
                                       item.title,
-
-                                      style: const TextStyle(overflow: TextOverflow.ellipsis,
+                                      style: const TextStyle(
+                                          overflow: TextOverflow.ellipsis,
                                           fontSize: 15,
                                           fontWeight: FontWeight.bold,
                                           color: Color(0xff3C3261)),
                                     ),
-                                    Icon(!state.moviesList[index].liked
+                                    Icon(!item.liked
                                         ? Icons.star_border
                                         : Icons.star),
                                   ],
